@@ -16,6 +16,15 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - run:
+          name: "Server Prettier Check"
+          command: npm run check-code-format
+      - run:
+          name: "Server Lint Check"
+          command: npm run lint
+      - run:
+          name: "Flow Server Code Coverage"
+          command: npm run flow:ci
 workflows:
   version: 2
   build:

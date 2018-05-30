@@ -5,14 +5,17 @@ import loadModels from './models';
 export default () => {
   // Find the appropriate database to connect to, default to localhost if not found.
   const connect = () => {
-    mongoose.connect(db, err => {
-      if (err) {
-        console.log(`===>  Error connecting to ${db}`);
-        console.log(`Reason: ${err}`);
-      } else {
-        console.log(`===>  Succeeded in connecting to ${db}`);
+    mongoose.connect(
+      db,
+      err => {
+        if (err) {
+          console.log(`===>  Error connecting to ${db}`);
+          console.log(`Reason: ${err}`);
+        } else {
+          console.log(`===>  Succeeded in connecting to ${db}`);
+        }
       }
-    });
+    );
   };
   connect();
 
