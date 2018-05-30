@@ -2591,7 +2591,7 @@ var _moment2 = _interopRequireDefault(_moment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var db = exports.db = process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://localhost/Products';
+var db = exports.db = process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://Junkdog-Mongo/Products';
 
 var currentUTC = exports.currentUTC = _moment2.default.utc().local().format('YYYY-MM-DD HH:mm:ss');
 
@@ -4987,6 +4987,10 @@ var _morgan = __webpack_require__(/*! morgan */ "morgan");
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
+var _cors = __webpack_require__(/*! cors */ "cors");
+
+var _cors2 = _interopRequireDefault(_cors);
+
 var _db = __webpack_require__(/*! ./db */ "../server/db/index.js");
 
 var _db2 = _interopRequireDefault(_db);
@@ -5018,6 +5022,8 @@ var app = (0, _express2.default)();
 _db2.default.connect();
 
 app.use((0, _morgan2.default)('dev'));
+
+app.use((0, _cors2.default)());
 
 (0, _hotLoader2.default)(app, _app.isDebug);
 
@@ -5535,6 +5541,17 @@ module.exports = require("connect-mongo");
 /***/ (function(module, exports) {
 
 module.exports = require("cookie-parser");
+
+/***/ }),
+
+/***/ "cors":
+/*!***********************!*\
+  !*** external "cors" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("cors");
 
 /***/ }),
 

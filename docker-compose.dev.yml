@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  ################################
+  #   Setup Mongo container
+  ################################
+  mongo:
+    container_name: Junkdog-Mongo
+    image: mongo:latest
+    volumes:
+      - 'mongodbdata:/data'
+    ports:
+      - "27017:27017"
+  ################################
+  #   Setup node container
+  ################################
+  server:
+    container_name: Junkdog-Server
+    build: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app/
+    command: npm run dev
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    links:
+      - mongo
+
+volumes:
+  mongodbdata:
+    external: true
