@@ -1,11 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import db from './db';
 import { isDebug } from '../config/app';
 import initHotLoader from './init/hotLoader';
 import initExpress from './init/express';
 import initGraphQL from './init/graphql';
 import initRoutes from './init/routes';
+
 // import renderSSR from './render/pageRender';
 
 const app = express();
@@ -13,6 +15,8 @@ const app = express();
 db.connect();
 
 app.use(morgan('dev'));
+
+app.use(cors());
 
 initHotLoader(app, isDebug);
 
